@@ -125,6 +125,11 @@
         /* Эффект при активном нажатии на персонажа */
         .character:active {
             transform: scale(0.95);
+            outline: none !important; /* Убираем outline при активном состоянии */
+        }
+        /* Убираем outline при фокусе для персонажа */
+        .character:focus {
+            outline: none !important;
         }
 
         /* Стили для изображений внутри персонажа */
