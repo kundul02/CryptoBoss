@@ -413,6 +413,11 @@
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
 
+        /* Убираем outline при фокусе для кнопок */
+        button:focus {
+            outline: none !important;
+        }
+
         /* Медиа-запросы для очень маленьких экранов (по высоте) */
         @media (max-height: 600px) {
             .header {
@@ -748,15 +753,15 @@
             
             if (isCrit) {
                 earnedCoins *= gameState.critMultiplier;
-                showCritEffect(event); // Показываем эффект крита
+                // showCritEffect(event); // Убрано по запросу пользователя
             }
 
-            // Множитель события
+            // Event multiplier
             if (gameState.eventActive) {
                 earnedCoins *= gameState.eventMultiplier;
             }
 
-            // Бонус престижа
+            // Prestige bonus
             const prestigeBonus = 1 + (gameState.prestigePoints * 0.1);
             earnedCoins *= prestigeBonus;
 
@@ -764,9 +769,7 @@
             gameState.totalEarned += earnedCoins; // Учитываем общее количество заработанных монет
             gameState.totalTaps++; // Увеличиваем счетчик тапов
 
-            // Показываем эффект тапа
-            const displayText = isCrit ? `КРИТ! +${formatNumber(Math.floor(earnedCoins))}` : `+${formatNumber(Math.floor(earnedCoins))}`;
-            showTapEffect(event, displayText, isCrit);
+            // showTapEffect(event, displayText, isCrit); // Убрано по запросу пользователя
 
             // Показываем комбо, если оно достаточно большое
             if (gameState.comboCount > 5) {
@@ -786,10 +789,12 @@
 
         /**
          * Показывает всплывающий эффект с количеством заработанных монет.
+         * Эта функция была убрана по запросу пользователя.
          * @param {Event} event - Объект события клика.
          * @param {string} text - Текст для отображения (например, "+10").
          * @param {boolean} isCrit - Флаг, указывающий, является ли это критическим ударом.
          */
+        /*
         function showTapEffect(event, text, isCrit = false) {
             const effect = document.createElement('div');
             effect.className = isCrit ? 'crit-effect' : 'tap-effect';
@@ -806,10 +811,13 @@
             
             setTimeout(() => effect.remove(), isCrit ? 1500 : 1000); // Удаляем эффект через некоторое время
         }
+        */
 
         /**
          * Показывает визуальный эффект критического удара на персонаже.
+         * Эта функция была убрана по запросу пользователя.
          */
+        /*
         function showCritEffect() {
             const character = document.querySelector('.character');
             character.style.filter = 'drop-shadow(0 10px 30px rgba(255, 107, 107, 0.8))'; // Красное свечение
@@ -817,6 +825,7 @@
                 character.style.filter = 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))'; // Возвращаем обычное свечение
             }, 200);
         }
+        */
 
         /**
          * Показывает всплывающее сообщение о комбо.
